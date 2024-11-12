@@ -9,10 +9,10 @@ label_encoder = LabelEncoder()
 ordinal_encoder = OrdinalEncoder()
 from encoder import MultiColumnLabelEncoder
 
-df1 = pd.read_csv("dsine_python.csv")
-y= df1[["hv270"]]
+#df1 = pd.read_csv("dsine_python.csv")
+#y= df1[["hv270"]]
 def select_k_best_features(data, k=10):
-    X = df1.drop(columns=["hv270"])
+    X = data.drop(columns=["hv270"])
     X_final = X[['hv219' ,'hv024','hv025','hv106_01','hv115_01'
                                   ,'hv201','hv237a','hv237b',"hv009","hv220",
                                   'hv237c','hv237d','hv237e','hv237f',
