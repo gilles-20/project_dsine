@@ -14,6 +14,7 @@ tab1, tab2 = st.tabs(["Feature Selection", "Prediction"])
 with tab1:
     st.header("Home") 
     st.write("selecting features for prediction!")
+    st.write("In this section, most important features are selected from the best model.")
 
     def select_k_best_features(data, k=10):
         X = data.drop(columns=["hv270"])
@@ -108,6 +109,7 @@ with tab2:
 
     st.header("Prediction")
     st.write("Predicting the target variable!")
+    st.write("In this section, the socio-economic status of a household is assessed with some probability based on the information provided by the user.")
     with open('model.pkl', 'rb') as file:
      model = pickle.load(file)
     mappings = { "Educational level": {"Not educated": 0, "Pre-school": 1, "Primary": 2,"Secondary": 3,"Higher": 4}, 
@@ -132,8 +134,8 @@ with tab2:
                 "Clock": {"No":0,"Yes":1}
                 }
     
-    Number_of_Households = st.number_input("Enter the number of households:")
-    Age_of_head_of_household = st.number_input("Enter the age head of households:")
+    Number_of_Households = st.number_input("Enter the number of household members:")
+    Age_of_head_of_household = st.number_input("Enter the age(in years) of the head of the household:")
     # Create a dictionary to store the encoded inputs
     encoded_inputs = {}
      # Create a selectbox for each categorical variable
@@ -160,6 +162,8 @@ with tab2:
        # Class names
         class_names = ["Poorest", "Poorer", "Middle", "Richer", "Richest"] 
         # Display class probabilities using circles (progress bars) 
+        max_prob_index = np.argmax(probabilities) 
+        st.write(f"Based on the information provided, the household could belong in the '{class_names[max_prob_index]}'category with a chance of {percentages[max_prob_index]:.2f}%.")
         st.write("Class Probabilities:") 
         for i, percent in enumerate(percentages): 
             st.write(f"{class_names[i]}: {percent:.2f}%") 
