@@ -13,7 +13,7 @@ import pickle
 tab1, tab2 = st.tabs(["Feature Selection", "Prediction"])
 with tab1:
     st.header("Home")
-    st.markdown("<h2 style = 'color: green;'>The aim of this project is to develop and validate a robust statistical multivariable machine learning model to estimate the socio-economic status; including both DHS economic and socio-demographic variables </h2>", unsafe_allow_html=True)
+    st.markdown("<h4 style = 'color: green;'>The aim of this project is to develop and validate a robust statistical multivariable machine learning model to estimate the socio-economic status; including both DHS economic and socio-demographic variables </h4>", unsafe_allow_html=True)
     st.markdown("<h2 style = 'color: orange;'>selecting features for prediction!</h2>", unsafe_allow_html=True)
     st.markdown("""
             <p style='font-size:20px;'>
@@ -114,11 +114,11 @@ with tab2:
 
     st.header("Prediction")
     #st.write("Predicting the target variable!")
-    #st.write("In this section, the socio-economic status of a household is assessed with some probability based on the information provided by the user using the selected features.")
+    #st.write("In this section, the socio-economic status(poorest, poorer,middle,richer,richest) of a household is assessed with some probability based on the information provided by the user using the selected features.")
     st.markdown("<h2 style='color: blue;'>Predicting the target variable!</h2>", unsafe_allow_html=True)
     st.markdown("""
             <p style='font-size:20px;'>
-                In this section, the socio-economic status of a household is assessed with some probability based on the information provided by the user using the selected features.
+                In this section, the socio-economic status(poorest,poorer,middle,richer,richest) of a household is assessed by attributing a probability of a patient  to belong to each of the aforementioned categories based on the information provided by the user using the selected features presented as follows.
             </p>
         """, unsafe_allow_html=True)
     with open('model.pkl', 'rb') as file:
@@ -145,13 +145,13 @@ with tab2:
                 "Clock": {"No":0,"Yes":1}
                 }
     
-    Number_of_Households = st.number_input("Enter the number of household members:")
-    Age_of_head_of_household = st.number_input("Enter the age(in years) of the head of the household:")
+    Number_of_Households = st.number_input("Enter the number of household members:",min_value=1,step=1)
+    Age_of_head_of_household = st.number_input("Enter the age(in years) of the head of the household:",min_value=18,max_value=80,step=1)
     # Create a dictionary to store the encoded inputs
     encoded_inputs = {}
      # Create a selectbox for each categorical variable
     for var, mapping in mappings.items(): 
-        user_input = st.selectbox(list(mapping.keys())) 
+        user_input = st.selectbox(f" select {var}",list(mapping.keys())) 
         encoded_inputs[var] = mapping[user_input] 
         # Display the encoded inputs 
     #st.write("Encoded inputs:")
