@@ -113,7 +113,7 @@ with tab1:
 with tab2:
 
     st.header("Prediction")
-    #st.write("Predicting the target variable!")
+    #st.write("Predicting the Socio-economic status!")
     #st.write("In this section, the socio-economic status(poorest, poorer,middle,richer,richest) of a household is assessed with some probability based on the information provided by the user using the selected features.")
     st.markdown("<h2 style='color: blue;'>Predicting the target variable!</h2>", unsafe_allow_html=True)
     st.markdown("""
