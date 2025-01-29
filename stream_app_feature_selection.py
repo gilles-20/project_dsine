@@ -115,7 +115,7 @@ with tab2:
     st.header("Prediction")
     #st.write("Predicting the Socio-economic status!")
     #st.write("In this section, the socio-economic status(poorest, poorer,middle,richer,richest) of a household is assessed with some probability based on the information provided by the user using the selected features.")
-    st.markdown("<h2 style='color: blue;'>Predicting the target variable!</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color: blue;'>Predicting the Socio-economic Status!</h2>", unsafe_allow_html=True)
     st.markdown("""
             <p style='font-size:20px;'>
                 In this section, the socio-economic status(poorest,poorer,middle,richer,richest) of a household is assessed by attributing a probability of a patient  to belong to each of the aforementioned categories based on the information provided by the user using the selected features presented as follows.
