@@ -12,9 +12,14 @@ import pickle
 
 tab1, tab2 = st.tabs(["Feature Selection", "Prediction"])
 with tab1:
-    st.header("Home") 
-    st.write("selecting features for prediction!")
-    st.write("In this section, most important features are selected from the best model.")
+    st.header("Home")
+    st.markdown("<h2 style = 'color: green;'>The aim of this project is to develop and validate a robust statistical multivariable machine learning model to estimate the socio-economic status; including both DHS economic and socio-demographic variables </h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style = 'color: orange;'>selecting features for prediction!</h2>", unsafe_allow_html=True)
+    st.markdown("""
+            <p style='font-size:20px;'>
+                In this section, most important features are selected from the best model.
+                </p>
+                """, unsafe_allow_html=True)
 
     def select_k_best_features(data, k=10):
         X = data.drop(columns=["hv270"])
@@ -108,8 +113,14 @@ with tab1:
 with tab2:
 
     st.header("Prediction")
-    st.write("Predicting the target variable!")
-    st.write("In this section, the socio-economic status of a household is assessed with some probability based on the information provided by the user.")
+    #st.write("Predicting the target variable!")
+    #st.write("In this section, the socio-economic status of a household is assessed with some probability based on the information provided by the user using the selected features.")
+    st.markdown("<h2 style='color: blue;'>Predicting the target variable!</h2>", unsafe_allow_html=True)
+    st.markdown("""
+            <p style='font-size:20px;'>
+                In this section, the socio-economic status of a household is assessed with some probability based on the information provided by the user using the selected features.
+            </p>
+        """, unsafe_allow_html=True)
     with open('model.pkl', 'rb') as file:
      model = pickle.load(file)
     mappings = { "Educational level": {"Not educated": 0, "Pre-school": 1, "Primary": 2,"Secondary": 3,"Higher": 4}, 
@@ -140,7 +151,7 @@ with tab2:
     encoded_inputs = {}
      # Create a selectbox for each categorical variable
     for var, mapping in mappings.items(): 
-        user_input = st.selectbox(f"Choose entries for {var}:", list(mapping.keys())) 
+        user_input = st.selectbox(list(mapping.keys())) 
         encoded_inputs[var] = mapping[user_input] 
         # Display the encoded inputs 
     #st.write("Encoded inputs:")
@@ -163,9 +174,12 @@ with tab2:
         class_names = ["Poorest", "Poorer", "Middle", "Richer", "Richest"] 
         # Display class probabilities using circles (progress bars) 
         max_prob_index = np.argmax(probabilities) 
-        st.write(f"Based on the information provided, the household could belong in the '{class_names[max_prob_index]}'category with a chance of {percentages[max_prob_index]:.2f}%.")
+        st.write(f"**Based on the information provided, the household could belong in the '{class_names[max_prob_index]}' category with a chance of {percentages[max_prob_index]:.2f}%.**")
         st.write("Class Probabilities:") 
         for i, percent in enumerate(percentages): 
             st.write(f"{class_names[i]}: {percent:.2f}%") 
             st.progress(int(percent))
+
+
+
         
