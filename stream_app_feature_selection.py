@@ -180,6 +180,16 @@ with tab2:
             st.write(f"{class_names[i]}: {percent:.2f}%") 
             st.progress(int(percent))
 
+    st.write("**Note: The prediction is based on a machine learning model trained on a dataset from the 2018 DHS survey. The model's performance may vary depending on the specific data used.**")
+    st.write("**This project is still in its early stages. If you have any questions or need further assistance, please let me know(dongmo20gilles@gmail.com).**")
+    st.write("**Thank you for using this app!**")
+    st.markdown("""
+    <hr>
+    <p style='text-align: center; font-size:16px;'>
+        This application was designed by Gilles Protais Lekelem Dongmo, and Pr. Dr. Nguefack Tsague Georges.
+    </p>
+""", unsafe_allow_html=True)
+
 
 
         
