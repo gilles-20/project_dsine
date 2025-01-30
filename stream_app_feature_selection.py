@@ -189,6 +189,31 @@ with tab2:
         This application was designed by Gilles Protais Lekelem Dongmo, and Pr. Dr. Nguefack Tsague Georges.
     </p>
 """, unsafe_allow_html=True)
+    
+
+st.markdown("""
+    <hr>
+    <p style='text-align: center; font-size:16px;'>
+        <b>ACKNOWLEDGMENTS</b><br>
+        This research was supported (Award reference number: 2023/P06/D-SINE Africa/D) by the
+        Data Science Center for the Study of Surgery, Injury, and Equity in Africa (D-SINE Africa), 
+        a multi-institutional partnership funded by the National Institutes of Health (NIH, 5U54TW012087) and the Fogarty International Centre (FIC, D43TW009343). 
+        It was implemented by Challenges Initiative Solutions.
+        The authors wish to express their profound appreciation for the support 
+        provided by this organization. The content is solely the responsibility of the authors and
+        does not necessarily represent the official views of D-SINE Africa.
+    </p>
+""", unsafe_allow_html=True)
+    
+
+st.markdown("""
+    <hr>
+    <p style='text-align: center; font-size:16px;'>
+        <b>DISCLAIMER</b><br>
+         This application is without any warranty. No author accepts responsibility to anyone for the consequences of using it or for whether it serves any particular purpose or works at all
+    </p>
+""", unsafe_allow_html=True)
+    
 
 
 
