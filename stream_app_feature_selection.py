@@ -9,6 +9,44 @@ label_encoder = LabelEncoder()
 ordinal_encoder = OrdinalEncoder()
 from encoder import MultiColumnLabelEncoder
 import pickle
+# Custom CSS
+st.markdown("""
+    <style>
+    .main {
+       background-image: url('https://example.com/your-image.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    .stButton>button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+    }
+    .stTextInput>div>div>input {
+        border: 2px solid #4CAF50;
+        border-radius: 4px;
+    }
+    .stSelectbox>div>div>div>div {
+        border: 2px solid #4CAF50;
+        border-radius: 4px;
+    }
+    .stMarkdown h2 {
+        color: #4CAF50;
+    }
+    .stMarkdown p {
+        font-size: 18px;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 tab2, tab1 = st.tabs(["Prediction", "Feature Selection"])
 with tab1:
@@ -150,9 +188,13 @@ with tab2:
     # Create a dictionary to store the encoded inputs
     encoded_inputs = {}
      # Create a selectbox for each categorical variable
-    for var, mapping in mappings.items(): 
-        user_input = st.selectbox(f" select {var}",list(mapping.keys())) 
-        encoded_inputs[var] = mapping[user_input] 
+   # Create a selectbox for each categorical variable
+    for var, mapping in mappings.items():
+        if set(mapping.keys()) == {"Yes", "No"}:
+            user_input = st.selectbox(f"Do you have {var}?", list(mapping.keys()))
+        else:
+            user_input = st.selectbox(f"Select {var}", list(mapping.keys()))
+        encoded_inputs[var] = mapping[user_input]
         # Display the encoded inputs 
     #st.write("Encoded inputs:")
     #st.write(encoded_inputs)
@@ -191,19 +233,19 @@ with tab2:
 """, unsafe_allow_html=True)
     
 
-st.markdown("""
-    <hr>
-    <p style='text-align: center; font-size:16px;'>
-        <b>ACKNOWLEDGMENTS</b><br>
-        This research was supported (Award reference number: 2023/P06/D-SINE Africa/D) by the
-        Data Science Center for the Study of Surgery, Injury, and Equity in Africa (D-SINE Africa), 
-        a multi-institutional partnership funded by the National Institutes of Health (NIH, 5U54TW012087) and the Fogarty International Centre (FIC, D43TW009343). 
-        It was implemented by Challenges Initiative Solutions.
-        The authors wish to express their profound appreciation for the support 
-        provided by this organization. The content is solely the responsibility of the authors and
-        does not necessarily represent the official views of D-SINE Africa.
-    </p>
-""", unsafe_allow_html=True)
+#st.markdown("""
+   # <hr>
+    #<p style='text-align: center; font-size:16px;'>
+        #<b>ACKNOWLEDGMENTS</b><br>
+        #This research was supported (Award reference number: 2023/P06/D-SINE Africa/D) by the
+        #Data Science Center for the Study of Surgery, Injury, and Equity in Africa (D-SINE Africa), 
+        #a multi-institutional partnership funded by the National Institutes of Health (NIH, 5U54TW012087) and the Fogarty International Centre (FIC, D43TW009343). 
+        #It was implemented by Challenges Initiative Solutions.
+        #The authors wish to express their profound appreciation for the support 
+        #provided by this organization. The content is solely the responsibility of the authors and
+        #does not necessarily represent the official views of D-SINE Africa.
+    #</p>
+#""", unsafe_allow_html=True)
     
 
 st.markdown("""
