@@ -10,10 +10,9 @@ ordinal_encoder = OrdinalEncoder()
 from encoder import MultiColumnLabelEncoder
 import pickle
 
-tab1, tab2 = st.tabs(["Feature Selection", "Prediction"])
+tab2, tab1 = st.tabs(["Prediction", "Feature Selection"])
 with tab1:
-    st.header("Home")
-    st.markdown("<h4 style = 'color: green;'>The aim of this project is to develop and validate a robust statistical multivariable machine learning model to estimate the socio-economic status; including both DHS economic and socio-demographic variables </h4>", unsafe_allow_html=True)
+    
     st.markdown("<h2 style = 'color: orange;'>selecting features for prediction!</h2>", unsafe_allow_html=True)
     st.markdown("""
             <p style='font-size:20px;'>
@@ -111,7 +110,8 @@ with tab1:
 
 
 with tab2:
-
+    st.header("Home")
+    st.markdown("<h4 style = 'color: green;'>The aim of this project is to develop and validate a robust statistical multivariable machine learning model to estimate the socio-economic status; including both DHS economic and socio-demographic variables </h4>", unsafe_allow_html=True)
     st.header("Prediction")
     #st.write("Predicting the Socio-economic status!")
     #st.write("In this section, the socio-economic status(poorest, poorer,middle,richer,richest) of a household is assessed with some probability based on the information provided by the user using the selected features.")
