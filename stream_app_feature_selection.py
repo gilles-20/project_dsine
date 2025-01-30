@@ -124,7 +124,7 @@ with tab2:
     with open('model.pkl', 'rb') as file:
      model = pickle.load(file)
     mappings = { "Educational level": {"Not educated": 0, "Pre-school": 1, "Primary": 2,"Secondary": 3,"Higher": 4}, 
-                "Marital Status": {"Single": 0, "Married": 1,"Widow":2,"Divorced":3}, 
+                "Marital Status": {"Single": 0, "Married": 1,"Widow":2,"Divorced/Separated":3}, 
                 "Region of Origin": {"Far-North": 4, "East": 3,"Centre(Without Yaounde)":1,"Yaoundé":11,"adamawa":0,
                                      "South-West":10,"South":9,"West":8,"Douala":2,"Littoral(without Douala)":5,
                                      "North-West":7,"North":6}, 
@@ -145,7 +145,7 @@ with tab2:
                 "Clock": {"No":0,"Yes":1}
                 }
     
-    Number_of_Households = st.number_input("Enter the number of household members:",min_value=1,step=1)
+    Number_of_Households = st.number_input("Enter the number of household members:",min_value=1, max_value=40,step=1)
     Age_of_head_of_household = st.number_input("Enter the age(in years) of the head of the household:",min_value=18,max_value=80,step=1)
     # Create a dictionary to store the encoded inputs
     encoded_inputs = {}
